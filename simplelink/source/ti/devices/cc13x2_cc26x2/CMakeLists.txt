@@ -43,11 +43,11 @@ zephyr_library_sources_ifdef(CONFIG_BLE_CC13XX_CC26XX
 # Required for RFCDoorbellSendTo which is not in ROM
 zephyr_library_sources_ifdef(CONFIG_BLE_CC13XX_CC26XX driverlib/rfc.c)
 
-if(CONFIG_SOC_CC1352R)
+if(CONFIG_SOC_CC1352R OR CONFIG_SOC_CC1352P)
   # Required for RFCDoorbellSendTo which is not in ROM
   set_source_files_properties(driverlib/rfc.c
     PROPERTIES COMPILE_DEFINITIONS "DeviceFamily_CC13X2;${COMPILER}" )
-elseif(CONFIG_SOC_CC2652R)
+elseif(CONFIG_SOC_CC2652R OR CONFIG_SOC_CC2652P)
   # Required for RFCDoorbellSendTo which is not in ROM
   set_source_files_properties(driverlib/rfc.c
     PROPERTIES COMPILE_DEFINITIONS "DeviceFamily_CC26X2;${COMPILER}" )
